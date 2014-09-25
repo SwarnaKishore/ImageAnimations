@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>JS Bin</title>
+  <script src="//code.jquery.com/jquery.min.js"></script>
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+
+   <link rel="stylesheet" href="//code.jquery.com/ui/1.11.1/themes/smoothness/jquery-ui.css">
+  <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+  <script src="//code.jquery.com/ui/1.11.1/jquery-ui.js"></script>
+  <style>
+ .wrapper img
+  {
+   background-repeat: no-repeat;
+   background-position: center;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  position:fixed;
+   width: 100%;
+    height: 100%;
+  top: 0; 
+  left: 0; 
+  right:0;
+  bottom:0;
+
+  }
+  .toggler {
+    width: 500px;
+    height: 200px;
+  }
+  #button {
+    padding: .5em 1em;
+    text-decoration: none;
+  }
+  #effect {
+    position: relative;
+    width: 240px;
+    height: 135px;
+    padding: 0.4em;
+  }
+  #effect h3 {
+    margin: 0;
+    padding: 0.4em;
+    text-align: center;
+  }
+ 
+  #effect img {
+  	display: table;
+    margin: 0 auto;
+     }
+     
+     #effectTypes
+     {
+     	
+  margin-right:10px;
+   height: 33px;
+   overflow: hidden;
+   width: 240px;
+
+   background-color:#46b8da;
+   color:white;
+   font-weight:bold;
+     }
+     
+ 
+  </style>
+  <script>
+  $(function() {
+    // run the currently selected effect
+    function runEffect() {
+      // get effect type from
+      var selectedEffect = $( "#effectTypes" ).val();
+ 
+      // most effect types need no options passed by default
+      var options = {};
+      // some effects have required parameters
+      if ( selectedEffect === "scale" ) {
+        options = { percent: 0 };
+      } else if ( selectedEffect === "size" ) {
+        options = { to: { width: 200, height: 60 } };
+      }
+ 
+      // run the effect
+      $( "#effect" ).toggle( selectedEffect, options, 500 );
+    };
+ 
+    // set effect from select menu value
+    $( "#button" ).click(function() {
+      runEffect();
+    });
+  });
+  </script>
+</head>
+<body>
+ <div class="container-fluid">
+ 	<div class="wrapper">
+       <img src="Images/cloud.png" class="img-responsive" alt="Responsive image">
+      </div>
+ 	</div>	
+ 	<div class="container-fluid">
+<div class="toggler">
+  <div id="effect" class="text-center">
+    <img style="width:900px;height:400px;position:absolute;top:210px;margin-left:750px;" src="Images/Cutepowerpuff-girls.jpg" class="img-responsive pull-right" >
+
+  </div>
+</div>
+ <div class="col-lg-5 center-block" style="margin-top:350px;margin-left:750px;">
+<select name="effects" id="effectTypes">
+  <option style="font-weight: bold" value="blind">Blind</option>
+  <option style="font-weight: bold" value="bounce">Bounce</option>
+  <option style="font-weight: bold" value="drop">Drop</option>
+  <option style="font-weight: bold" value="pulsate">Pulsate</option>
+  <option style="font-weight: bold" value="shake">Shake</option>
+ 
+</select>
+ 
+<button id="button" class="btn btn-info" style="font-weight: bold">Toggle</button>
+ </div>
+ </div>
+</body>
+</html>
